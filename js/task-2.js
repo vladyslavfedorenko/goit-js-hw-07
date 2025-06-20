@@ -25,3 +25,25 @@ const images = [
   },
 ];
 const gallery = document.querySelector(".gallery");
+
+// Створюємо масив <li> елементів
+const items = images.map((image) => {
+  const li = document.createElement("li");
+  const img = document.createElement("img");
+
+  img.src = image.url;
+  img.alt = image.alt;
+  img.width = 360;
+  img.height = 300;
+
+  li.appendChild(img);
+  return li;
+});
+gallery.style.listStyle = "none";
+gallery.style.display = "flex";
+gallery.style.flexWrap = "wrap";
+gallery.style.justifyContent = "center";
+gallery.style.gap = "16px";
+
+// Додаємо всі <li> за одну операцію
+gallery.append(...items);
